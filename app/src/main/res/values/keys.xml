@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="key_pref_category_debug">key_pref_category_debug</string>
+    <string name="key_pref_debug">key_pref_debug</string>
+
+    <string name="key_pref_debug_edittext">key_pref_debug_edittext</string>
+    <string name="key_pref_first_launch">key_pref_first_launch</string>
+    <string name="key_pref_register">key_pref_register</string>
+
+</resources>

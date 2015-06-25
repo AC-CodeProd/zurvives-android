@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.gc.materialdesign.views.ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:fillViewport="true">
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" >
+
+        <LinearLayout
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dip">
+
+            <com.rengwuxian.materialedittext.MaterialEditText
+                android:id="@+id/fragment_register_edittext_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:met_floatingLabel="normal"
+                app:met_floatingLabelTextColor="@color/fragment_register_floating"
+                app:met_underlineColor="@color/fragment_register_underline"
+                android:hint="@string/fragment_register_edittext_name"/>
+
+            <com.rengwuxian.materialedittext.MaterialEditText
+                android:id="@+id/fragment_register_edittext_nickname"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:met_floatingLabel="normal"
+                app:met_floatingLabelTextColor="@color/fragment_register_floating"
+                app:met_underlineColor="@color/fragment_register_underline"
+                android:hint="@string/fragment_register_edittext_nickname"/>
+
+            <com.rengwuxian.materialedittext.MaterialEditText
+                android:id="@+id/fragment_register_edittext_email"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:met_floatingLabel="normal"
+                app:met_floatingLabelTextColor="@color/fragment_register_floating"
+                app:met_underlineColor="@color/fragment_register_underline"
+                android:hint="@string/fragment_register_edittext_email"/>
+
+            <com.rengwuxian.materialedittext.MaterialEditText
+                android:id="@+id/fragment_register_edittext_password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:met_floatingLabel="normal"
+                app:met_floatingLabelTextColor="@color/fragment_register_floating"
+                app:met_underlineColor="@color/fragment_register_underline"
+                app:met_minCharacters="8"
+                android:inputType="textPassword"
+                android:hint="@string/fragment_register_edittext_password"/>
+
+            <com.rengwuxian.materialedittext.MaterialEditText
+                android:id="@+id/fragment_register_edittext_password_confirmation"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:met_floatingLabel="normal"
+                app:met_floatingLabelTextColor="@color/fragment_register_floating"
+                app:met_underlineColor="@color/fragment_register_underline"
+                app:met_minCharacters="8"
+                android:inputType="textPassword"
+                android:hint="@string/fragment_register_edittext_password_confirmation"/>
+
+            <com.gc.materialdesign.views.ButtonRectangle
+                android:id="@+id/fragment_register_button_new_account"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dip"
+                android:background="@color/background_btn"
+                android:text="@string/fragment_register_button_new_account"/>
+
+            <TextView
+                android:id="@+id/link_to_login"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="40dip"
+                android:layout_marginBottom="40dip"
+                android:text="@string/fragment_register_edittext_already_has_accountt"
+                android:gravity="center"
+                android:textSize="20dip"/>
+
+        </LinearLayout>
+    </RelativeLayout>
+</com.gc.materialdesign.views.ScrollView>

@@ -1,0 +1,20 @@
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"  >
+
+    <PreferenceCategory
+        android:key="@string/key_pref_category_debug"
+        android:title="@string/pref_title_category_debug" >
+        <SwitchPreference
+            android:defaultValue="@bool/pref_enabled_default"
+            android:key="@string/key_pref_debug"
+            android:summary="@string/pref_summary_debug"
+            android:switchTextOff="@string/switch_off"
+            android:switchTextOn="@string/switch_on"
+            android:title="@string/pref_title_debug" />
+
+        <EditTextPreference android:title="@string/pref_title_debug_edittext"
+            android:key="@string/key_pref_debug_edittext" android:dependency="@string/key_pref_debug"
+            android:summary="Enter ip" android:dialogTitle="Enter ip"
+            android:defaultValue="@string/pref_ip_default"/>
+
+    </PreferenceCategory>
+</PreferenceScreen>

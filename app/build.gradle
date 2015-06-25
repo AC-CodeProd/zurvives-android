@@ -1,5 +1,12 @@
 apply plugin: 'com.android.application'
 
+repositories {
+    maven { url 'https://github.com/Goddchen/mvn-repo/raw/master/' }
+    maven { url 'http://raw.github.com/wada811/Android-Material-Design-Colors/master/repository/' }
+    mavenCentral()
+    jcenter()
+}
+
 android {
     compileSdkVersion 22
     buildToolsVersion "21.1.2"
@@ -17,9 +24,32 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    packagingOptions {
+        exclude 'META-INF/LICENSE'
+        exclude 'META-INF/NOTICE'
+        exclude 'META-INF/LICENSE.txt'
+        exclude 'META-INF/NOTICE.txt'
+        exclude 'META-INF/notice.txt'
+        exclude 'META-INF/license.txt'
+    }
 }
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile 'com.squareup.okhttp:okhttp-urlconnection:2.0.0'
+    compile 'com.squareup.okhttp:okhttp:2.0.0'
+    compile group:'com.octo.android.robospice', name:'robospice-retrofit', version:'1.4.14'
+    compile 'com.rengwuxian.materialedittext:library:2.1.4'
+    compile 'de.hdodenhof:circleimageview:1.3.0'
+    compile 'com.wada811:android-material-design-colors:2.0.0'
+    compile 'com.github.navasmdc:MaterialDesign:1.5@aar'
+    compile('de.keyboardsurfer.android.widget:crouton:1.8.5@aar') {
+        // exclusion is not necessary, but generally a good idea.
+        exclude group: 'com.google.android', module: 'support-v4'
+    }
+    compile 'com.android.support:support-v4:22.1.1'
     compile 'com.android.support:appcompat-v7:22.1.1'
+    //compile 'com.android.support:design:22.2.0'
+    compile 'com.android.support:cardview-v7:22.1.1'
+    compile 'com.android.support:recyclerview-v7:22.1.1'
 }

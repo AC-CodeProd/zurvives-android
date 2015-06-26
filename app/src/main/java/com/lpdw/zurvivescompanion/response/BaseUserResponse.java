@@ -3,19 +3,15 @@ package com.lpdw.zurvivescompanion.response;
 import com.google.gson.annotations.SerializedName;
 
 /**
- * Created by CAJUSTE Alain on 01/06/2015.
+ * Created by CAJUSTE Alain on 16/06/2015.
  */
-public class UserResponse extends BaseResponse {
+public abstract class BaseUserResponse {
 
     @SerializedName("data")
-    private Data data;
+    protected Data data;
 
     public Data getData() {
         return data;
-    }
-
-    public void setData(Data data) {
-        this.data = data;
     }
 
     public class Data {
@@ -44,56 +40,34 @@ public class UserResponse extends BaseResponse {
             return email;
         }
 
-        public void setEmail(String email) {
-            this.email = email;
-        }
 
         public String getName() {
             return name;
         }
 
-        public void setName(String name) {
-            this.name = name;
-        }
 
         public int getId() {
             return id;
         }
 
-        public void setId(int id) {
-            this.id = id;
-        }
 
         public String getImage() {
             return image;
         }
 
-        public void setImage(String image) {
-            this.image = image;
-        }
 
         public String getNickname() {
             return nickname;
         }
 
-        public void setNickname(String nickname) {
-            this.nickname = nickname;
-        }
 
         public String getProvider() {
             return provider;
         }
 
-        public void setProvider(String provider) {
-            this.provider = provider;
-        }
 
         public String getUid() {
             return uid;
-        }
-
-        public void setUid(String uid) {
-            this.uid = uid;
         }
 
         @Override
@@ -108,15 +82,5 @@ public class UserResponse extends BaseResponse {
                     ", uid='" + uid + '\'' +
                     "}";
         }
-    }
-
-
-    @Override
-    public String toString() {
-        if (data != null)
-            return "UserResponse{" +
-                    "data=" + data.toString() +
-                    "}";
-        return "errors";
     }
 }

@@ -15,6 +15,7 @@
 
 
         <FrameLayout
+            android:padding="@dimen/fragement_padding"
             android:id="@+id/container"
             android:background="@color/primary_material_light"
             android:layout_width="match_parent"

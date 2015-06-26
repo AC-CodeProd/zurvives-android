@@ -1,6 +1,7 @@
 package com.lpdw.zurvivescompanion.api;
 
-import com.lpdw.zurvivescompanion.response.UserResponse;
+import com.lpdw.zurvivescompanion.response.UserRegisterResponse;
+import com.lpdw.zurvivescompanion.response.UserSignInResponse;
 
 import retrofit.http.Field;
 import retrofit.http.FormUrlEncoded;
@@ -12,7 +13,7 @@ import retrofit.http.POST;
 public interface Auth {
     @FormUrlEncoded
     @POST("/auth")
-    UserResponse onRegister(
+    UserRegisterResponse onRegister(
             @Field("name") String name,
             @Field("nickname") String nickname,
             @Field("email") String email,
@@ -23,7 +24,7 @@ public interface Auth {
 
     @FormUrlEncoded
     @POST("/auth/sign_in")
-    UserResponse onSignIn(
+    UserSignInResponse onSignIn(
             @Field("email") String email,
             @Field("password") String password
     );

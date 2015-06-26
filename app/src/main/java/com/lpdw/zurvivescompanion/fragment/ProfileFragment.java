@@ -7,15 +7,20 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.gc.materialdesign.views.ButtonFlat;
 import com.gc.materialdesign.widgets.Dialog;
 import com.lpdw.zurvivescompanion.R;
+import com.lpdw.zurvivescompanion.data.User;
 
 /**
  * Created by CAJUSTE Alain on 24/06/2015.
  */
 public class ProfileFragment extends BaseFragment {
+
+
+    private TextView fragmentProfileWelcomeMessage;
 
     public ProfileFragment() {
     }
@@ -35,7 +40,8 @@ public class ProfileFragment extends BaseFragment {
     }
 
     public void initView(View mView) {
-
+        fragmentProfileWelcomeMessage = (TextView) mView.findViewById(R.id.fragment_profile_welcome_message);
+        fragmentProfileWelcomeMessage.setText(String.format(getResources().getString(R.string.fragment_profile_welcome_message), User.getInstance().getEmail()));
     }
 
     @Override

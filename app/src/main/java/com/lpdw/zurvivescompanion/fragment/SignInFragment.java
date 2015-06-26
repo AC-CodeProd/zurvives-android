@@ -2,16 +2,12 @@ package com.lpdw.zurvivescompanion.fragment;
 
 
 import android.content.Intent;
-import android.graphics.Color;
-import android.graphics.PorterDuff;
 import android.os.Bundle;
-import android.util.Log;
 import android.util.Patterns;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.gc.materialdesign.views.ButtonRectangle;
 import com.gc.materialdesign.views.CheckBox;
@@ -19,9 +15,8 @@ import com.lpdw.zurvivescompanion.R;
 import com.lpdw.zurvivescompanion.activity.AuthActivity;
 import com.lpdw.zurvivescompanion.activity.MainActivity;
 import com.lpdw.zurvivescompanion.data.User;
-import com.lpdw.zurvivescompanion.request.RegisterRequest;
 import com.lpdw.zurvivescompanion.request.SignInRequest;
-import com.lpdw.zurvivescompanion.response.UserResponse;
+import com.lpdw.zurvivescompanion.response.UserSignInResponse;
 import com.lpdw.zurvivescompanion.utils.Function;
 import com.lpdw.zurvivescompanion.views.widgets.ProgressDialog;
 import com.octo.android.robospice.persistence.DurationInMillis;
@@ -32,7 +27,6 @@ import com.rengwuxian.materialedittext.MaterialEditText;
 import de.keyboardsurfer.android.widget.crouton.Crouton;
 import de.keyboardsurfer.android.widget.crouton.Style;
 import retrofit.RetrofitError;
-import retrofit.mime.TypedByteArray;
 
 /**
  * Created by CAJUSTE Alain on 16/06/2015.
@@ -69,8 +63,8 @@ public class SignInFragment extends BaseAuthFragment {
         fragmentSignInRememberme = (TextView) mView.findViewById(R.id.fragment_sign_in_rememberme);
         fragmentSignInCheckboxRememberme = (CheckBox) mView.findViewById(R.id.fragment_sign_in_checkbox_rememberme);
         linkToRegister = (TextView) mView.findViewById(R.id.link_to_register);
-        fragmentSignInEdittextEmail.setText("cajuste.alain@gmail.com");
-        fragmentSignInEdittextPassword.setText("azerty123");
+        fragmentSignInEdittextEmail.setText("nacho3@gmail.com");
+        fragmentSignInEdittextPassword.setText("nacho1234");
 
         linkToRegister.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -100,12 +94,12 @@ public class SignInFragment extends BaseAuthFragment {
                 progressDialog.show();
                 getSpiceManager().execute(request,
                         "message_cache",
-                        DurationInMillis.ALWAYS_EXPIRED, new RequestListener<UserResponse>() {
+                        DurationInMillis.ALWAYS_EXPIRED, new RequestListener<UserSignInResponse>() {
                             @Override
                             public void onRequestFailure(SpiceException spiceException) {
                                 String message = "Login failed";
                                 if (spiceException.getCause() != null && ((RetrofitError) spiceException.getCause()).getBody() != null) {
-                                    message = ((UserResponse) ((RetrofitError) spiceException.getCause()).getBody()).getErrors()[0];
+                                    message = ((UserSignInResponse) ((RetrofitError) spiceException.getCause()).getBody()).getErrors()[0];
                                 } else if (spiceException.getCause() != null) {
                                     message = ((RetrofitError) spiceException.getCause()).getMessage();
 
@@ -114,7 +108,7 @@ public class SignInFragment extends BaseAuthFragment {
                             }
 
                             @Override
-                            public void onRequestSuccess(UserResponse userResponse) {
+                            public void onRequestSuccess(UserSignInResponse userResponse) {
                                 loginSuccess(userResponse);
                             }
                         });
@@ -149,7 +143,7 @@ public class SignInFragment extends BaseAuthFragment {
         Crouton.makeText(getActivity(), message, Style.ALERT).show();
     }
 
-    private void loginSuccess(UserResponse userResponse) {
+    private void loginSuccess(UserSignInResponse userResponse) {
         if (progressDialog != null) {
             progressDialog.dismiss();
         }

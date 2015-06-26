@@ -23,6 +23,8 @@ import com.gc.materialdesign.widgets.Dialog;
 import com.lpdw.zurvivescompanion.R;
 import com.lpdw.zurvivescompanion.data.User;
 import com.lpdw.zurvivescompanion.fragment.BaseFragment;
+import com.lpdw.zurvivescompanion.fragment.CharactersFragment;
+import com.lpdw.zurvivescompanion.fragment.EquipmentsFragment;
 import com.lpdw.zurvivescompanion.fragment.ProfileFragment;
 import com.lpdw.zurvivescompanion.fragment.RegisterFragment;
 import com.lpdw.zurvivescompanion.fragment.SignInFragment;
@@ -42,7 +44,7 @@ public class MainActivity extends BaseActivity {
     private static Fragment mFragment = null;
     private static FragmentManager mFragmentManager = null;
 
-    private String TITLES[] = {"Profil", "Mes personnages", "Les équipements"};
+    private String TITLES[] = {"Profil", /*"Mes personnages",*/ "Les équipements"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -146,20 +148,26 @@ public class MainActivity extends BaseActivity {
                         .replace(R.id.container, mFragment)
                         .commit();
                 break;
+            /*case 2:
+                mToolbar.setTitle(R.string.fragment_characters_title);
+                mFragment = new CharactersFragment();
+                mFragmentManager.beginTransaction()
+                        .replace(R.id.container, mFragment)
+                        .commit();
+                break;*/
             case 2:
-
+                mToolbar.setTitle(R.string.fragment_equipments_title);
+                mFragment = new EquipmentsFragment();
+                mFragmentManager.beginTransaction()
+                        .replace(R.id.container, mFragment)
+                        .commit();
                 break;
         }
     }
 
     public void onTouchDrawer(final int position) {
         if (currentMenu == position) return;
-        Log.v("onTouchDrawer", "position => " + position);
-        switch (currentMenu) {
-            case 1:
-                break;
-        }
-
+        updateContent(position);
     }
 
     public void onNavigationDrawerItemSelected(final Fragment fragment) {

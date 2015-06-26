@@ -34,6 +34,8 @@
 
 
     <string name="fragment_profile_title">Profil</string>
+    <string name="fragment_characters_title">Mes personnages</string>
+    <string name="fragment_equipments_title">Les équipements</string>
 
 
 
@@ -41,6 +43,10 @@
     <string name="dialog_message_confirmation">Souhaitez-vous réellement quitter l\'application ?</string>
     <string name="dialog_accept_button">Oui</string>
     <string name="dialog_cancel_button">Non</string>
+    
+    
+    
+    <string name="fragment_profile_welcome_message">Bonjour, %1$s</string>
 
 
 </resources>

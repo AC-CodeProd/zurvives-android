@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.util.Patterns;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,9 +13,9 @@ import android.widget.TextView;
 import com.gc.materialdesign.views.ButtonRectangle;
 import com.lpdw.zurvivescompanion.R;
 import com.lpdw.zurvivescompanion.activity.AuthActivity;
-import com.lpdw.zurvivescompanion.preference.ZurvivesPreference;
 import com.lpdw.zurvivescompanion.request.RegisterRequest;
-import com.lpdw.zurvivescompanion.response.UserResponse;
+import com.lpdw.zurvivescompanion.response.UserRegisterResponse;
+import com.lpdw.zurvivescompanion.response.UserSignInResponse;
 import com.lpdw.zurvivescompanion.utils.Function;
 import com.lpdw.zurvivescompanion.views.widgets.ProgressDialog;
 import com.octo.android.robospice.persistence.DurationInMillis;
@@ -24,8 +23,7 @@ import com.octo.android.robospice.persistence.exception.SpiceException;
 import com.octo.android.robospice.request.listener.RequestListener;
 import com.rengwuxian.materialedittext.MaterialEditText;
 
-import de.keyboardsurfer.android.widget.crouton.Crouton;
-import de.keyboardsurfer.android.widget.crouton.Style;
+import retrofit.RetrofitError;
 
 /**
  * Created by CAJUSTE Alain on 16/06/2015.
@@ -68,11 +66,11 @@ public class RegisterFragment extends BaseAuthFragment {
         linkToLogin = (TextView) mView.findViewById(R.id.link_to_login);
         fragmentRegisterButtonNewAccount.setEnabled(false);
 
-        fragmentRegisterEdittextName.setText("Cajuste");
-        fragmentRegisterEdittextNickname.setText("AC Dragnir");
-        fragmentRegisterEdittextEmail.setText("cajuste.alain@gmail.com");
-        fragmentRegisterEdittextPassword.setText("azerty123");
-        fragmentRegisterEdittextPasswordConfirmation.setText("azerty123");
+        fragmentRegisterEdittextName.setText("Nacho");
+        fragmentRegisterEdittextNickname.setText("Super nacho");
+        fragmentRegisterEdittextEmail.setText("nacho4@gmail.com");
+        fragmentRegisterEdittextPassword.setText("nacho1234");
+        fragmentRegisterEdittextPasswordConfirmation.setText("nacho1234");
 
         fragmentRegisterEdittextName.addTextChangedListener(textWatcher);
         fragmentRegisterEdittextNickname.addTextChangedListener(textWatcher);
@@ -106,16 +104,21 @@ public class RegisterFragment extends BaseAuthFragment {
                 progressDialog.show();
                 getSpiceManager().execute(request,
                         "message_cache",
-                        DurationInMillis.ALWAYS_EXPIRED, new RequestListener<UserResponse>() {
+                        DurationInMillis.ALWAYS_EXPIRED, new RequestListener<UserRegisterResponse>() {
                             @Override
                             public void onRequestFailure(SpiceException spiceException) {
-                                Log.v("onRequestFailure", spiceException.getMessage());
-                                requestFailure(spiceException.getMessage());
+                                String message = "Failed";
+                                if (spiceException.getCause() != null && ((RetrofitError) spiceException.getCause()).getBody() != null) {
+                                    message = ((UserRegisterResponse) ((RetrofitError) spiceException.getCause()).getBody()).getErrors().getFullMessages()[0];
+                                } else if (spiceException.getCause() != null) {
+                                    message = ((RetrofitError) spiceException.getCause()).getMessage();
+
+                                }
+                                requestFailure(message);
                             }
 
                             @Override
-                            public void onRequestSuccess(UserResponse userResponse) {
-                                Log.v("onRequestSuccess", userResponse.toString());
+                            public void onRequestSuccess(UserRegisterResponse userRegisterResponse) {
                                 registerSuccess();
                             }
                         });

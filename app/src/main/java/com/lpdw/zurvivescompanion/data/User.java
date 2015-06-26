@@ -1,6 +1,6 @@
 package com.lpdw.zurvivescompanion.data;
 
-import com.lpdw.zurvivescompanion.response.UserResponse;
+import com.lpdw.zurvivescompanion.response.UserSignInResponse;
 
 /**
  * Created by CAJUSTE Alain on 15/06/2015.
@@ -33,7 +33,7 @@ public class User {
         _instance = null;
     }
 
-    public void setDataUser(UserResponse.Data data) {
+    public void setDataUser(UserSignInResponse.Data data) {
         this.name = data.getName();
         this.nickname = data.getNickname();
         this.email = data.getEmail();
